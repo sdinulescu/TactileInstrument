@@ -12,12 +12,13 @@ The sense of touch is used to convey semantic and emotional information when int
   - I was successful reading in numbers, but the string that I was sending serially via Arduino was not being parsed properly on the other end. I looked into the itoa and fromsymbol object, where I found itoa do what I need to pending proper parameter setting via the serial object (i.e. the "chunk" parameter, specificying how many numbers I was expecting to be communicated via serial port). 
   - However, halfway through my creation/exploration of this patch, my devices stopped registering in the ports list of Arduino. Both Feather M0 boards were not being listed on either my Macbook or my Windows 10 office computer, despite manually resetting the board. Stack overflow or adafruit forums were not fruitful.
   - In the meantime, I ordered a Teensy board to attempt to utilize it as a midi input. Arrives on 11/01.
-- Utilize Teensy to transmit accelerometer data to Max (11/01)
-  - Get Teensy registered by computer as a midi or HI device, or via serial port in Arduino
+- Utilize Teensy to transmit accelerometer data to Max (11/01 and 11/02)
+  - Get Teensy registered by computer (works now on Mac and Windows) as a midi or HI device, and/or via serial port in Arduino
+    - A macOS update (to the new Monterey OS) fixed the problem I was having with the teensy not being recognized (or any microcontroller device) via USB port
   - Receive messages in Max
+  - Display raw accelerometer data (x, y, z data per accelerometers --> 2 accelerometers --> 6 floats per read sample) in Max
 
 ## To Do
 
-- Display raw accelerometer data (x, y, z data per accelerometers --> 2accelerometers --> 6 floats) in Max (in progress)
 - *planned 11/02:* Extend Max patch to process data (compress axes to one-dimensional signal, normalize, whiten), visualize these signals (*scope~*, *number~*)
 - *planned 11/03:* Control 4 simple synthesis processes
