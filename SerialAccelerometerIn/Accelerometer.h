@@ -16,19 +16,19 @@ class Accelerometer {
   
   void readAcc() {
     pastTimestamp = micros();
-    int x = analogRead(xpin);
-    int y = analogRead(ypin);
-    int z = analogRead(zpin);
+    int x = map(analogRead(xpin), 0, 4096, 0, 127);
+    int y = map(analogRead(ypin), 0, 4096, 0, 127);
+    int z = map(analogRead(zpin), 0, 4096, 0, 127);
 //    String p = String(id) + " " + String(x) + " " + String(y) + " " + String(z);
 //    Serial.println(p);
     Serial.print(id);
-    Serial.print(" ");
+    Serial.print(",");
     Serial.print(x);
-    Serial.print(" ");
+    Serial.print(",");
     Serial.print(y);
-    Serial.print(" ");
+    Serial.print(",");
     Serial.print(z);
-    Serial.println(" ");
+    Serial.println(",");
   }
 
   int getTimestamp() { return pastTimestamp; }

@@ -1,6 +1,6 @@
 #include "Accelerometer.h"
 
-const int samplingRate = 800; // 300 microseconds
+const int samplingRate = 2000;
 
 Accelerometer acc1 {1, A0, A1, A2};
 Accelerometer acc2 {2, A3, A4, A5};
@@ -13,5 +13,5 @@ void setup() {
 
 void loop() {
   if (micros() - acc1.getTimestamp() >= samplingRate - 3) { acc1.readAcc(); } // read from acc 1
-  //if (micros() - acc2.getTimestamp() >= samplingRate - 3) { acc2.readAcc(); } // read from acc 2
+  if (micros() - acc2.getTimestamp() >= samplingRate - 3) { acc2.readAcc(); } // read from acc 2
 }
