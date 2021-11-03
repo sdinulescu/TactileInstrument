@@ -17,8 +17,10 @@ The sense of touch is used to convey semantic and emotional information when int
     - A macOS update (to the new Monterey OS) fixed the problem I was having with the teensy not being recognized (or any microcontroller device) via USB port
   - Receive messages in Max
   - Display raw accelerometer data (x, y, z data per accelerometers --> 2 accelerometers --> 6 floats per read sample) in Max
+    - Issue --> Sample drops due to needing to bang the serial object to read from serial port. Move back to old Python script for reading serial input, and send OSC data to Max. TO DO.
 
 ## To Do
 
-- *planned 11/02:* Extend Max patch to process data (compress axes to one-dimensional signal, normalize, whiten), visualize these signals (*scope~*, *number~*)
-- *planned 11/03:* Control 4 simple synthesis processes
+- *planned 11/03*: OSC messaging from python script to max 
+- *Next:* Extend Max patch to process data (compress axes to one-dimensional signal, normalize, whiten), visualize these signals (*scope~*, *number~*)
+- *Next:* Control 4 simple synthesis processes

@@ -15,7 +15,6 @@ void setup() {
 void loop() {
   if (micros() - acc1.getTimestamp() >= samplingRate - 3) { acc1.readAcc(); }; // read from acc 1
   if (micros() - acc2.getTimestamp() >= samplingRate - 3) { acc2.readAcc(); }; // read from acc 2
-//  acc1.readAcc();
-//  acc2.readAcc();
-  Serial.println(String(acc1.getSample() + " " + acc2.getSample()));
+
+  //Serial.println(String(acc1.getSample() + " " + acc2.getSample()));
 }
