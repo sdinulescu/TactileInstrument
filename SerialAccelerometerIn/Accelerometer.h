@@ -5,6 +5,7 @@ class Accelerometer {
   int xpin = 0; 
   int ypin = 0;
   int zpin = 0;
+  String sample = "";
 
   public:
   Accelerometer(int id_, int xp, int yp, int zp) {
@@ -29,8 +30,8 @@ class Accelerometer {
 //    usbMIDI.sendNoteOn(z, 100, id);
 //      usbMIDI.send("float", x, y, z, id);
     
-    String p = String(id) + " " + String(x) + " " + String(y) + " " + String(z);
-    Serial.println(p);
+    sample = String(id) + " " + String(x) + " " + String(y) + " " + String(z);
+    //Serial.println(p);
 
 //    Serial.print(id);
 //    Serial.print(",");
@@ -43,4 +44,5 @@ class Accelerometer {
   }
 
   int getTimestamp() { return pastTimestamp; }
+  String getSample() { return sample; }
 };
