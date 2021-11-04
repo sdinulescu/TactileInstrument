@@ -22,7 +22,7 @@ class Accelerometer {
     int z = analogRead(zpin);
     
     sample = String(id) + " " + String(x) + " " + String(y) + " " + String(z);
-    Serial.println(sample);
+    //Serial.println(sample);
   }
 
   int getTimestamp() { return pastTimestamp; }
