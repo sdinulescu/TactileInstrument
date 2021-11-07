@@ -33,6 +33,12 @@ The sense of touch is used to convey semantic and emotional information when int
   - OSC messaging from python script to max works (11/03 -11/04) --> I am filling a buffer with the samples read in via OSC; however, I am still experiencing sample drops. This causes the buffer to look like discrete signals (i.e. measuring periods of touch on the accelerometer, or no touch).![Screen Shot 2021-11-07 at 10.25.07 AM](/Users/stejaraiulia/Desktop/Screen Shot 2021-11-07 at 10.25.07 AM.png)
   
   - 11/06 --> I just needed to change some parameters of the buffer object to visualize the signal better. Now, you can clearly see when each accelerometer is tapped, as well as the resulting mechanical reverberations. This can now be sonified!![Screen Shot 2021-11-07 at 10.45.26 AM](/Users/stejaraiulia/Desktop/Screen Shot 2021-11-07 at 10.45.26 AM.png)
+  
+- Sonifying signals
+
+- Using line~ and mc.play~, I am able to playback all three channels of signal from each buffer (11/07)
+
+  - How can these signals drive/shape audio output? Try first with a simple sine oscillator, varying pitch with signal change
 
 ----------------
 
