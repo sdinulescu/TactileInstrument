@@ -31,13 +31,13 @@ The sense of touch is used to convey semantic and emotional information when int
   - Display raw accelerometer data (x, y, z data per accelerometers --> 2 accelerometers --> 6 floats per read sample) in Max
     - Issue --> Sample drops due to needing to bang the serial object to read from serial port. Move back to old Python script for reading serial input, and send OSC data to Max.
   - OSC messaging from python script to max works (11/03 -11/04) --> I am filling a buffer with the samples read in via OSC; however, I am still experiencing sample drops. This causes the buffer to look like discrete signals (i.e. measuring periods of touch on the accelerometer, or no touch).![Screen Shot 2021-11-07 at 10.25.07 AM](/Users/stejaraiulia/Desktop/Screen Shot 2021-11-07 at 10.25.07 AM.png)
+  
+  - 11/06 --> I just needed to change some parameters of the buffer object to visualize the signal better. Now, you can clearly see when each accelerometer is tapped, as well as the resulting mechanical reverberations. This can now be sonified!![Screen Shot 2021-11-07 at 10.45.26 AM](/Users/stejaraiulia/Desktop/Screen Shot 2021-11-07 at 10.45.26 AM.png)
 
 ----------------
 
 ## To Dos
 
-- Figure out sample drops/find a way to plot the entire signal (mechanical response of the skin during touch contact)
-  - I can do this easily in Matlab. Just need to find a way to do this in Max successfully.
 - *Next:* Extend Max patch to process data (compress axes to one-dimensional signal, normalize, whiten), visualize these signals (*scope~*, *number~*)
 - *Next:* Control synthesis processes
 
