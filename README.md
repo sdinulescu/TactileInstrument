@@ -12,15 +12,16 @@ The sense of touch is used to convey semantic and emotional information when int
   - I was successful reading in numbers, but the string that I was sending serially via Arduino was not being parsed properly on the other end. I looked into the itoa and fromsymbol object, where I found itoa do what I need to pending proper parameter setting via the serial object (i.e. the "chunk" parameter, specificying how many numbers I was expecting to be communicated via serial port). 
   - However, halfway through my creation/exploration of this patch, my devices stopped registering in the ports list of Arduino. Both Feather M0 boards were not being listed on either my Macbook or my Windows 10 office computer, despite manually resetting the board. Stack overflow or adafruit forums were not fruitful.
   - In the meantime, I ordered a Teensy board to attempt to utilize it as a midi input. Arrives on 11/01.
-- Utilize Teensy to transmit accelerometer data to Max (11/01 and 11/02)
+- Utilize Teensy to transmit accelerometer data to Max (11/01-11/03)
   - Get Teensy registered by computer (works now on Mac and Windows) as a midi or HI device, and/or via serial port in Arduino
     - A macOS update (to the new Monterey OS) fixed the problem I was having with the teensy not being recognized (or any microcontroller device) via USB port
   - Receive messages in Max
   - Display raw accelerometer data (x, y, z data per accelerometers --> 2 accelerometers --> 6 floats per read sample) in Max
-    - Issue --> Sample drops due to needing to bang the serial object to read from serial port. Move back to old Python script for reading serial input, and send OSC data to Max. TO DO.
+    - Issue --> Sample drops due to needing to bang the serial object to read from serial port. Move back to old Python script for reading serial input, and send OSC data to Max.
+  - OSC messaging from python script to max works --> I am filling a buffer with the samples read in via OSC; however, I am still experiencing sample drops
 
 ## To Do
 
-- *planned 11/03*: OSC messaging from python script to max 
+- Figure out sample drops/find a way to plot the signal
 - *Next:* Extend Max patch to process data (compress axes to one-dimensional signal, normalize, whiten), visualize these signals (*scope~*, *number~*)
-- *Next:* Control 4 simple synthesis processes
+- *Next:* Control synthesis processes
