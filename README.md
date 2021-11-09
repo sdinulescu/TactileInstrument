@@ -23,7 +23,7 @@ The sense of touch is used to convey semantic and emotional information when int
   
 - Utilize Teensy to transmit accelerometer data to Max (11/01-11/03). Setup pictured below with 2 accelerometers.
   
-  ![IMG_8200](/Users/stejaraiulia/GitHub/TactileInstrument/Images/IMG_8200.png)
+  ![IMG_8200](/Users/stejaraiulia/GitHub/TactileInstrument/Images/IMG_8200.jpg)
   
   - Get Teensy registered by computer (works now on Mac and Windows) as a midi or HI device, and/or via serial port in Arduino
     - A macOS update (to the new Monterey OS) fixed the problem I was having with the teensy not being recognized (or any microcontroller device) via USB port
