@@ -33,17 +33,22 @@ The sense of touch is used to convey semantic and emotional information when int
   - OSC messaging from python script to max works (11/03 -11/04) --> I am filling a buffer with the samples read in via OSC; however, I am still experiencing sample drops. This causes the buffer to look like discrete signals (i.e. measuring periods of touch on the accelerometer, or no touch).![DiscreteBuffer](/Users/stejaraiulia/GitHub/TactileInstrument/images/DiscreteBuffer.png)
   - 11/06 --> I just needed to change some parameters of the buffer object to visualize the signal better. Now, you can clearly see when each accelerometer is tapped, as well as the resulting mechanical reverberations.![VisWaveform](/Users/stejaraiulia/GitHub/TactileInstrument/images/VisWaveform.png) This can now be sonified! 
   
-- Sonifying signals
+- Sonifying signals/controlling continuous and discrete synthesis processes
 
-  - Using line~ and mc.play~, I am able to playback all three channels of signal from each buffer (11/07)
-  - How can these signals drive/shape audio output? First, I tried with a simple sine oscillator, varying pitch with signal change (11/07-11/08)
+  - Using line~ and mc.play~, I am able to playback all three channels of signal from each recorded buffer (11/07). This is a discrete playback method, which will be used for gesture detection and playback/control.
+  - How can accelerometer signals drive/shape continuous audio output? First, I tried with a simple sine oscillator, varying pitch with signal change (11/07-11/08).
+  - 11/10: I can successfully sonify signals continuously (as the accelerometers detect motion), as well as playback from a buffer discretely. 3-axis signals are normalized and mapped to a desired frequency range. Using mc.cycle~ object to treat each axis as a "voice", combining them all in the output. Will look into varying sonic properties with each accelerometer channel for more complex voices. ![ContinuousAndDiscreteSonification](/Users/stejaraiulia/GitHub/TactileInstrument/images/ContinuousAndDiscreteSonification.png)
 
 
 ----------------
 
 ## To Dos
 
-- *Next:* Extend Max patch to process data (compress axes to one-dimensional signal, normalize, whiten), visualize these signals (*scope~*, *number~*)
+- *Next:* Gesture detection with discrete buffer playback. 
+  - Extend patch to capture a detected gesture
+  - Compress axes to one-dimensional signal, normalize, whiten (over the entire gesture) 
+  - Visualize a discrete gesture (*scope~*, *number~*)
+
 - *Next:* Control synthesis processes
 
 
