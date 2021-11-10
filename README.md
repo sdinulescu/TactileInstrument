@@ -36,7 +36,7 @@ The sense of touch is used to convey semantic and emotional information when int
 - Sonifying signals
 
   - Using line~ and mc.play~, I am able to playback all three channels of signal from each buffer (11/07)
-  - How can these signals drive/shape audio output? First, I tried with a simple sine oscillator, varying pitch with signal change
+  - How can these signals drive/shape audio output? First, I tried with a simple sine oscillator, varying pitch with signal change (11/07-11/08)
 
 
 ----------------
