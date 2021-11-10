@@ -1,7 +1,7 @@
 # Tactile Instrument
 A haptic bracelet for turning the hand into an instrument, performed via touch.
 
-Stejara Dinulescu, Fall 2021. MAT240A.
+Stejara Dinulescu, Fall 2021. MAT240A Final Project.
 
 ## Abstract
 
@@ -15,10 +15,11 @@ The sense of touch is used to convey semantic and emotional information when int
 
 - *10/28*: Utilizing the current device setup (4 3-axis analog accelerometers connected to 2 Adafruit Feather M0 Wifi boards, depicted in image above), read serial input via Max's serial object. See *SerialAccelerometerInput.maxpat* and *SerialAccelerometerIn* + *Accelerometer.h* Arduino files, located in the *SerialAccelerometerIn* folder.
   
-  - Following the *Communications Tutorial 2: Serial Communication* Max tutorial, I created a max patch utilizing the serial object utilizing the port that the adafruit device was on
-  - I was successful reading in numbers, but the string that I was sending serially via Arduino was not being parsed properly on the other end. I looked into the itoa and fromsymbol object, where I found itoa do what I need to pending proper parameter setting via the serial object (i.e. the "chunk" parameter, specificying how many numbers I was expecting to be communicated via serial port). 
+  - Following the *Communications Tutorial 2: Serial Communication* Max tutorial, I created a max patch with the serial object, passing it the port that the adafruit device was connected to in the Arduino IDE.
+  - I was successful reading in numbers from the microcontroller, but the string that I was sending serially via Arduino was not being parsed properly on the other end. I looked into the itoa and fromsymbol object in the tutorial and other references, and I found that itoa did what I needed. However, the chunking parameter was making parsing difficult, so I ended up changing the way I was sending values serially via Aruidno. 
   - However, halfway through my creation/exploration of this patch, my devices stopped registering in the ports list of Arduino. Both Feather M0 boards were not being listed on either my Macbook or my Windows 10 office computer, despite manually resetting the board. Stack overflow or adafruit forums were not fruitful. 
     - --> Updating my Macbook fixed this issue (still using the Teensy moving forward)
+    - I also found other cables with data flow that allowed me to connect the microcontroller to computer. Maybe the cables that I was previously using broke, but this seems relatively unlikely. 
   - In the meantime, I ordered a Teensy board to attempt to utilize it as a midi input. Arrives on 11/01.
   
 - Utilize Teensy to transmit accelerometer data to Max (11/01-11/03). Setup pictured below with 2 accelerometers.
