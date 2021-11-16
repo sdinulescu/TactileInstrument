@@ -39,18 +39,26 @@ The sense of touch is used to convey semantic and emotional information when int
   - Using line~ and mc.play~, I am able to playback all three channels of signal from each recorded buffer (11/07). This is a discrete playback method, which will be used for gesture detection and playback/control.
   - How can accelerometer signals drive/shape continuous audio output? First, I tried with a simple sine oscillator, varying pitch with signal change (11/07-11/08).
   - 11/10: I can successfully sonify signals continuously (as the accelerometers detect motion), as well as playback from a buffer discretely. 3-axis signals are normalized and mapped to a desired frequency range. Using mc.cycle~ object to treat each axis as a "voice", combining them all in the output. Will look into varying sonic properties with each accelerometer channel for more complex voices. ![ContinuousAndDiscreteSonification](/Users/stejaraiulia/GitHub/TactileInstrument/images/ContinuousAndDiscreteSonification.png)
+  - 11/15-16: how can I introduce silence into the system? There should be no sound when there is no touch contact. 
+    - Capturing values for the "zero" position -- i.e. when hand is flat and out, ready for touch contact
+    - Incoming sample values are subtracted from the zero value to get a relative change in accelerometer readings
+    - This change is then sonified -> this works, however, slight movements trigger sound. (Karl's recommendation -- use a continuous "zero" mapping as the hand changes, as well as a threshold for when to sound)
+  - 11/15-16: how to sonify taps on the hand as impulses? I need an envelope control that is triggered upon touch contact (Karl's suggestion -- onset detection to trigger envelope)
 
 
 ----------------
 
 ## To Dos
 
+- *Next:* Control continuous synthesis processes
+  - envelope triggering when touch contact is detected
+  - silence in the system
+  - better mappings for frequency modulation
+
 - *Next:* Gesture detection with discrete buffer playback. 
   - Extend patch to capture a detected gesture
   - Compress axes to one-dimensional signal, normalize, whiten (over the entire gesture) 
   - Visualize a discrete gesture (*scope~*, *number~*)
-
-- *Next:* Control synthesis processes
 
 
 
