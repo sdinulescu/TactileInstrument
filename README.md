@@ -44,6 +44,7 @@ The sense of touch is used to convey semantic and emotional information when int
     - Incoming sample values are subtracted from the zero value to get a relative change in accelerometer readings
     - This change is then sonified -> this works, however, slight movements trigger sound. (Karl's recommendation -- use a continuous "zero" mapping as the hand changes, as well as a threshold for when to sound)
   - 11/15-16: how to sonify taps on the hand as impulses? I need an envelope control that is triggered upon touch contact (Karl's suggestion -- onset detection to trigger envelope)
+    - 11/17-18: onset detection implementation from in-class example (Music Visualizer)
 
 
 ----------------
