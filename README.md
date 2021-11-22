@@ -44,22 +44,22 @@ The sense of touch is used to convey semantic and emotional information when int
     - Incoming sample values are subtracted from the zero value to get a relative change in accelerometer readings
     - This change is then sonified -> this works, however, slight movements trigger sound. (Karl's recommendation -- use a continuous "zero" mapping as the hand changes, as well as a threshold for when to sound)
   - 11/15-16: how to sonify taps on the hand as impulses? I need an envelope control that is triggered upon touch contact (Karl's suggestion -- onset detection to trigger envelope)
-    - 11/17-18: onset detection implementation from in-class example (Music Visualizer)
+    - 11/17-19: onset detection implementation from in-class example (and Music Visualizer)
+    - 11/20-21: perfect envelope triggering and include reverb
 
 
 ----------------
 
 ## To Dos
 
-- *Next:* Control continuous synthesis processes
-  - envelope triggering when touch contact is detected
-  - silence in the system
-  - better mappings for frequency modulation
-
-- *Next:* Gesture detection with discrete buffer playback. 
-  - Extend patch to capture a detected gesture
-  - Compress axes to one-dimensional signal, normalize, whiten (over the entire gesture) 
+- Control continuous synthesis processes --> consider a sliding zero function
+- Discrete buffer playback
+  - Onset and offset of gesture (capture an entire gesture)
+  - Compress axes to one-dimensional signal, normalize, whiten (over the entire gesture)
   - Visualize a discrete gesture (*scope~*, *number~*)
+  - Classification
+  - Triggering sonic events
+
 
 
 
