@@ -49,6 +49,7 @@ The sense of touch is used to convey semantic and emotional information when int
   - 11/29:  storing audio signal into buffer for gesture detection
     - My first approach was to store the one-channel signal (recorded a bit before the onset) further down in the pipeline, where I make my conversions to frequency and create a signal, which is then modulated and sonified.  I thought that I could store the created 1-channel signal, which I could send through a moving average filter (similar to my previous signal processing pipeline)
     - However, the max objects update at their fastest rate of 20ms, which is too slow compared to my sample rate. Therefore, I am losing samples when visualizing in the buffer. Next approach: use the onset detector to capture what sample number we are on, then read from the original stored buffer at 50 samples before the detected onset sample. This will mean I have to pipe everything through another instance of my sonification objects, but will enable me to grab the whole signal without losing samples.
+    - 11/29: This method works, I have touch gestures stored in a buffer now, which can be sent to a classifier, for both accelerometers.
 
 
 ----------------
