@@ -46,6 +46,9 @@ The sense of touch is used to convey semantic and emotional information when int
   - 11/15-16: how to sonify taps on the hand as impulses? I need an envelope control that is triggered upon touch contact (Karl's suggestion -- onset detection to trigger envelope)
     - 11/17-19: onset detection implementation from in-class example (and Music Visualizer)
     - 11/20-21: perfect envelope triggering and include reverb
+  - 11/29:  storing audio signal into buffer for gesture detection
+    - My first approach was to store the one-channel signal (recorded a bit before the onset) further down in the pipeline, where I make my conversions to frequency and create a signal, which is then modulated and sonified.  I thought that I could store the created 1-channel signal, which I could send through a moving average filter (similar to my previous signal processing pipeline)
+    - However, the max objects update at their fastest rate of 20ms, which is too slow compared to my sample rate. Therefore, I am losing samples when visualizing in the buffer. Next approach: use the onset detector to capture what sample number we are on, then read from the original stored buffer at 50 samples before the detected onset sample. This will mean I have to pipe everything through another instance of my sonification objects, but will enable me to grab the whole signal without losing samples.
 
 
 ----------------
@@ -59,7 +62,6 @@ The sense of touch is used to convey semantic and emotional information when int
   - Visualize a discrete gesture (*scope~*, *number~*)
   - Classification
   - Triggering sonic events
-
 
 
 
