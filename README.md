@@ -14,18 +14,18 @@ The sense of touch is used to convey semantic and emotional information when int
 ## Documentation
 
 - *10/28*: Utilizing the current device setup (4 3-axis analog accelerometers connected to 2 Adafruit Feather M0 Wifi boards, depicted in image above), read serial input via Max's serial object. See *SerialAccelerometerInput.maxpat* and *SerialAccelerometerIn* + *Accelerometer.h* Arduino files, located in the *SerialAccelerometerIn* folder.
-  
+
   - Following the *Communications Tutorial 2: Serial Communication* Max tutorial, I created a max patch with the serial object, passing it the port that the adafruit device was connected to in the Arduino IDE.
   - I was successful reading in numbers from the microcontroller, but the string that I was sending serially via Arduino was not being parsed properly on the other end. I looked into the itoa and fromsymbol object in the tutorial and other references, and I found that itoa did what I needed. However, the chunking parameter was making parsing difficult, so I ended up changing the way I was sending values serially via Aruidno and using the fromsymbol object.
   - However, halfway through my creation/exploration of this patch, my devices stopped registering in the ports list of Arduino. Both Feather M0 boards were not being listed on either my Macbook or my Windows 10 office computer, despite manually resetting the board. Stack overflow or adafruit forums were not fruitful. 
     - --> Updating my Macbook fixed this issue (still using the Teensy moving forward)
     - I also found other cables with data flow that allowed me to connect the microcontroller to computer. Maybe the cables that I was previously using broke, but this seems relatively unlikely. 
   - In the meantime, I ordered a Teensy board to attempt to utilize it as a midi input. Arrives on 11/01.
-  
+
 - Utilize Teensy to transmit accelerometer data to Max (11/01-11/03). Setup pictured below with 2 accelerometers.
-  
+
   ![TeensyAccs](images/TeensyAccs.jpg)
-  
+
   - Get Teensy registered by computer (works now on Mac and Windows) as a midi or HI device, and/or via serial port in Arduino
     - A macOS update (to the new Monterey OS) fixed the problem I was having with the teensy not being recognized (or any microcontroller device) via USB port
   - Receive messages in Max
@@ -33,7 +33,7 @@ The sense of touch is used to convey semantic and emotional information when int
     - Issue --> Sample drops due to needing to bang the serial object to read from serial port. Move back to old Python script for reading serial input, and send OSC data to Max.
   - OSC messaging from python script to max works (11/03 -11/04) --> I am filling a buffer with the samples read in via OSC; however, I am still experiencing sample drops. This causes the buffer to look like discrete signals (i.e. measuring periods of touch on the accelerometer, or no touch).![DiscreteBuffer](images/DiscreteBuffer.png)
   - 11/06 --> I just needed to change some parameters of the buffer object to visualize the signal better. Now, you can clearly see when each accelerometer is tapped, as well as the resulting mechanical reverberations.![VisWaveform](images/VisWaveform.png) This can now be sonified! 
-  
+
 - Sonifying signals/controlling continuous and discrete synthesis processes
 
   - Using line~ and mc.play~, I am able to playback all three channels of signal from each recorded buffer (11/07). This is a discrete playback method, which will be used for gesture detection and playback/control.
@@ -50,19 +50,28 @@ The sense of touch is used to convey semantic and emotional information when int
     - My first approach was to store the one-channel signal (recorded a bit before the onset) further down in the pipeline, where I make my conversions to frequency and create a signal, which is then modulated and sonified.  I thought that I could store the created 1-channel signal, which I could send through a moving average filter (similar to my previous signal processing pipeline)
     - However, the max objects update at their fastest rate of 20ms, which is too slow compared to my sample rate. Therefore, I am losing samples when visualizing in the buffer. Next approach: use the onset detector to capture what sample number we are on, then read from the original stored buffer at 50 samples before the detected onset sample. This will mean I have to pipe everything through another instance of my sonification objects, but will enable me to grab the whole signal without losing samples.
     - 11/29: This method works, I have touch gestures stored in a buffer now, which can be sent to a classifier, for both accelerometers.
+  - 12/02-12/03: data preprocessing
+    - demean the data
+    - moving average of window size 5
+    - lowpass filter @ 250 hz
+    - normalize to 1 across 2 channels (mc.normalize~), where each accelerometer is one channel
+  - 12/03: feature extraction
+    - mean absolute deviation
+    - peak to peak
+    - spectral centroid (using gen~.centroid and gen~.pfft patcher examples)
+  - 12/03:  brainstorming how to use ml.svm object
 
 
 ----------------
 
 ## To Dos
 
-- Control continuous synthesis processes --> consider a sliding zero function
-- Discrete buffer playback
-  - Onset and offset of gesture (capture an entire gesture)
-  - Compress axes to one-dimensional signal, normalize, whiten (over the entire gesture)
-  - Visualize a discrete gesture (*scope~*, *number~*)
-  - Classification
-  - Triggering sonic events
+- Consider a sliding zero function
+- Sonify features extracted from gesture, extract more features (only 3 out of the 7 features we use in our paper)
+- Classification
+  - ml.svm object -- how to train the model? achieve high classification/gesture detection accuracy? or consider using wekinator if ml.svm is too complicated.
+  - trigger/modulate sound based on classified gestures
+  
 
 
 
