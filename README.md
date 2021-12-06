@@ -62,7 +62,10 @@ The sense of touch is used to convey semantic and emotional information when int
   - 12/03:  brainstorming how to use ml.svm object
     - Meeting with Karl 12/04. Make own normalization function to match signal processing from prior work, and move forward with trying to get training data into ml.svm classifier.
   - 12/06: signal processing and classification
-    - made own normalization function using gen~ codebox to match prior work
+    - Made own normalization function using gen~ codebox to match prior work
+    - Tried to write some temporary data to the classifier, but it kept getting me a path error that I could not solve. Decided to go directly to bringing in the data to max from python via OSC messaging.
+    - Wrote python script to read training data from trainingdata.csv and send to max via osc messaging, decoded and parsed osc messages via max
+    - Trained ml.svm classifier and tested on one of the rows of data to see if I get the right class output.![TrainingClassifier](images/TrainingClassifier.png)
 
 
 ----------------
