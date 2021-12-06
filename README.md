@@ -60,6 +60,9 @@ The sense of touch is used to convey semantic and emotional information when int
     - peak to peak
     - spectral centroid (using gen~.centroid and gen~.pfft patcher examples)
   - 12/03:  brainstorming how to use ml.svm object
+    - Meeting with Karl 12/04. Make own normalization function to match signal processing from prior work, and move forward with trying to get training data into ml.svm classifier.
+  - 12/06: signal processing and classification
+    - made own normalization function using gen~ codebox to match prior work
 
 
 ----------------
