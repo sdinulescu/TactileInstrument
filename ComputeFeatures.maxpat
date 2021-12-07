@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 59.0, 81.0, 1232.0, 852.0 ],
+		"rect" : [ 275.0, 145.0, 1232.0, 852.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,17 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 490.0, 40.0, 150.0, 20.0 ],
+					"text" : "signal"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontface" : 0,
 					"fontname" : "Arial",
@@ -471,8 +482,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 105.0, 163.0, 205.0, 23.0 ],
-					"text" : "pfft~ gen~.centroid 512 16 @chans 2"
+					"patching_rect" : [ 105.0, 163.0, 151.0, 23.0 ],
+					"text" : "pfft~ gen~.centroid 512 16"
 				}
 
 			}
@@ -517,7 +528,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 445.200012000000015, 40.0, 30.0, 30.0 ]
 				}
 
