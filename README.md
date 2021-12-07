@@ -66,18 +66,25 @@ The sense of touch is used to convey semantic and emotional information when int
     - Tried to write some temporary data to the classifier, but it kept getting me a path error that I could not solve. Decided to go directly to bringing in the data to max from python via OSC messaging.
     - Wrote python script to read training data from trainingdata.csv and send to max via osc messaging, decoded and parsed osc messages via max
     - Trained ml.svm classifier and tested on one of the rows of data to see if I get the right class output.![TrainingClassifier](images/TrainingClassifier.png)
+    - Sliding zero function --> every time gesture is done writing to buffer, zero position is reset
+
+- 12/06 - 12/07: Sonify features extracted from gesture
+
+  - Features extracted include spectral centroid (frequency domain), peak to peak difference (time domain), and mean absolute deviation (time domain)
+    - mc wasn't working here, so I had to change approaches to extracting features per-channel with the use of encapsulation
+
 
 
 ----------------
 
-## To Dos
+## Future Work
 
-- Consider a sliding zero function
-- Sonify features extracted from gesture, extract more features (only 3 out of the 7 features we use in our paper)
+- Extract more features for classification (I was only able to implement 3 out of the 7 features that we use in the paper. The other 7 features turn into more features due to some features containing five bins each). Because of this, classification cannot work on just 3 features with the training method that I currently use.
 - Classification
-  - ml.svm object -- how to train the model? achieve high classification/gesture detection accuracy? or consider using wekinator if ml.svm is too complicated.
-  - trigger/modulate sound based on classified gestures
-  
+  - Ability to classify from all features extracted
+  - Trigger/modulate sound based on classified gestures
+- Tuning sound parameters of the system
+  - Make gestures repeatable for easy use as an instrument
 
 
 
